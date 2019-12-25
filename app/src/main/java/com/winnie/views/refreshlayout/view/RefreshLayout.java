@@ -85,7 +85,7 @@ public class RefreshLayout extends LinearLayout {
 
         mContentView = createContentView(context);
         addViewInternal(mContentView, new LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         mHeaderView = createLoadingView(context);
 
@@ -107,8 +107,8 @@ public class RefreshLayout extends LinearLayout {
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
+    protected void onSizeChanged(int w, int h, int oldW, int oldH) {
+        super.onSizeChanged(w, h, oldW, oldH);
         post(() -> {
             refreshHeaderViewsSize();
             requestLayout();
