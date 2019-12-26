@@ -82,7 +82,7 @@ public class RefreshHeaderView extends FrameLayout {
     }
 
     private void initProgress(Context context) {
-        Drawable imageDrawable = context.getResources().getDrawable(R.drawable.refresh_rotate);
+        Drawable imageDrawable = context.getResources().getDrawable(R.drawable.ic_waiting);
         if (null != imageDrawable) {
             mImageProgress.setImageDrawable(imageDrawable);
         }

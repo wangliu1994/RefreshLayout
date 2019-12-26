@@ -15,7 +15,7 @@
         android:layout_marginEnd="10dp"
         android:layout_toStartOf="@+id/ll_header_center"
         android:contentDescription="@android:string/untitled"
-        tools:src="@drawable/refresh_rotate" />
+        tools:src="@drawable/ic_waiting" />
 
     <LinearLayout
         android:id="@+id/ll_header_center"
