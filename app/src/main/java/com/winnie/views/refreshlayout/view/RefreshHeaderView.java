@@ -27,7 +27,7 @@ import java.util.Locale;
  * @desc 下拉刷新Header
  */
 public class RefreshHeaderView extends FrameLayout {
-    private static final int ROTATION_ANIMATION_DURATION = 1200;
+    private static final int ROTATION_ANIMATION_DURATION = 1500;
     private static String KEY_LAST_REFRESH_TIME = "KEY_LAST_REFRESH_TIME";
 
     private ImageView mImageProgress;
