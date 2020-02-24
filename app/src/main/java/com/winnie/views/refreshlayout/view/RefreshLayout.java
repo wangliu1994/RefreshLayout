@@ -30,7 +30,7 @@ public class RefreshLayout extends LinearLayout {
     private final static float FRICTION = 2.0f;
 
     private RefreshHeaderView mHeaderView;
-    private NestedScrollView mContentView;
+    private LinearLayout mContentView;
 
     /**
      * 最小滑动阈值
@@ -96,8 +96,8 @@ public class RefreshLayout extends LinearLayout {
         }
     }
 
-    private NestedScrollView createContentView(Context context) {
-        return new NestedScrollView(context);
+    private LinearLayout createContentView(Context context) {
+        return new LinearLayout(context);
     }
 
     private RefreshHeaderView createLoadingView(Context context) {
@@ -179,6 +179,11 @@ public class RefreshLayout extends LinearLayout {
             return false;
         }
 
+        //内部View还可以滑动的时候不拦截事件
+        if (canContentScrollVertically(mContentView)) {
+            return false;
+        }
+
         final int action = event.getAction();
         if (action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP) {
             mIsBeingDragged = false;
@@ -227,6 +232,26 @@ public class RefreshLayout extends LinearLayout {
                 break;
         }
         return mIsBeingDragged;
+    }
+
+    /**
+     * contentView内部可以滑动
+     */
+    private boolean canContentScrollVertically(View view) {
+        if (view.canScrollVertically(-1)) {
+            return true;
+        }
+        if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            int childSize = viewGroup.getChildCount();
+            for (int i = 0; i < childSize; i++) {
+                View child = viewGroup.getChildAt(i);
+                if(canContentScrollVertically(child)){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 
